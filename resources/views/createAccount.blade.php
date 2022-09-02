@@ -1,8 +1,4 @@
  
-<html lang="en">
-<head>
-</head>
-<body>
   
  
 
@@ -13,7 +9,7 @@
       <div class="mask text-white" style="background-color: rgba(0, 0, 0, 0.8)">
         <div class="container  p-5 align-items-center  h-100">
  
-          <form action="/dataRegister" method="POST">
+            <form> 
             @csrf 
              <h1>Create your Free Account</h1><br>
             <div id="mainDiv"> 
@@ -57,17 +53,15 @@
         </div>
       </div>
     </div>
-    <!-- Background image -->
   </header>
  
 
-{{-- <script>
+ <script>
   var userRegistration = document.getElementById('userRegistration');
 
  userRegistration.addEventListener('click',function(e){
 
-  // $table = "Hello From Console";
-  // console.log($table);
+ 
  e.preventDefault();
 
  const _token = document.getElementsByName("_token")[0].value;
@@ -86,21 +80,21 @@
     if (this.readyState == 4 && this.status == 200){
       var apiresponse = JSON.parse(this.responseText);
       if(apiresponse=="error"){
-        console.log('success');
-      }else{
         console.log('error');
+      }else{
+        console.log('success');
+
+        
       }
     }
   }
-  var data = {
-    name:name.value,
+  var data = {name:name.value,
   email:email.value,password:password.value, gender:gender.value, phone:phone.value};
 
-  // console.log(JSON.stringify(data))
   xhttp.send(JSON.stringify(data)); 
 
-});  --}}
- {{-- </script>  --}}
+
+});  
+  </script> 
 @endsection
- </body>
- </html>
+ 

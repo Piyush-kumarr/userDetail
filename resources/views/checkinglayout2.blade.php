@@ -1,15 +1,12 @@
-<html lang="en">
-<head>
+ 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
  
-</head>
-<body>
 
 
 <div class="header"> 
 @section('header')
-<header class="">
+<header >
     <!-- Animated navbar-->
     <nav class="navbar navbar-expand-lg fixed-top navbar-scroll">
       <div class="container-fluid">
@@ -54,5 +51,3 @@
     @show
 </div>
  
-</body>
-</html>

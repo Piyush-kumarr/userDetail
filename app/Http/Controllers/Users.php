@@ -58,19 +58,22 @@ class Users extends Controller
 
 
     function dataRegister(Request $req){
-        // $existingUser = User::where('email',$req->email)->orwhere('phone',$req->phone)->first();
-        // if(!$existingUser){
-        //     return "Soory This account user is on our database";
+        $returnResponse = array();
+        $existingUser = User::where('email',$req->email)->orwhere('phone',$req->phone)->first();
+        if($existingUser){
+             $existingUser->save();
+            $returnResponse["status"] = "error";
+            return json_encode($returnResponse);
+        } 
 
-        // } 
 
-
-        $req->validate([
-            'name'=>'required|min:5|max:255',
-            'email'=>'required|email|unique:users,email',
-            'phone'=>'required|max:10',
-            'password'=>'sometimes|min:6 ',
-        ]);
+        // $req->validate([
+        //     'name'=>'required|min:5|max:255',
+        //     'email'=>'required|email|unique:users,email',
+        //     'phone'=>'required|max:10',
+        //     'password'=>'sometimes|min:6 ',
+        // ]);
+        
         $user = new User; 
         $user->name= $req->name;
         $user->email= $req->email;
@@ -79,7 +82,9 @@ class Users extends Controller
         $user->phone = $req->phone;
         
         $user ->save();
-        return redirect("/");
+        return json_encode($returnResponse);
+
+        // return redirect("/");
     }
  
 
