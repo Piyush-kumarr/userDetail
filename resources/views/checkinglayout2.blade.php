@@ -4,7 +4,7 @@
  
 
 
-<div class="header"> 
+<div class="header" id="header"> 
 @section('header')
 <header >
     <!-- Animated navbar-->
@@ -28,15 +28,15 @@
         <div class="collapse navbar-collapse" id="navbarExample01">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0  ">
             <li class="nav-item active">
-              <a class="nav-link text-white fs-4" aria-current="page" href="">UpTodd</a>
+              <a   class="nav-link text-white fs-4" aria-current="page" href="">UpTodd</a>
             </li>
           </ul>
   
         <div class="navbar-nav ms-auto">
-                    <a href="/login" class=" text-white nav-item nav-link btn btn-primary">Login</a>
+                    <a href="/login"  style="box-shadow: gray 0 0 20px;" class=" text-white nav-item nav-link btn btn-primary">Login</a>
                 </div>
               <div class="navbar-nav ms-5">
-                    <a href="/create" class=" text-white nav-item nav-link btn btn-primary">Create Account</a>
+                    <a href="/create"  style="box-shadow: gray 0 0 20px;" class=" text-white nav-item nav-link btn btn-primary">Create Account</a>
              </div>
         </div>
       </div>

@@ -31,7 +31,7 @@
     display: table-row;
     
 } 
-
+ 
  
 
 .table-body-cell{

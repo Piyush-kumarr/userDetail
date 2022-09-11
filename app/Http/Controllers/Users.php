@@ -11,7 +11,7 @@ use Session;
 class Users extends Controller
 {
     
-
+   
     function viewLoginForm(){
         if(session()->get('email')) {
            return redirect('userDataPage') ;
@@ -20,18 +20,27 @@ class Users extends Controller
     }
     
     function loginsubmit(Request $req){
-
+        // $returnResponse = array();
+     
         $user = User::where('email',$req->email)->first();
 
             if(!$user || !Hash::check($req->password,$user->password)){
-            return "incorrect credentails";
+                // $returnResponse['status']="error";
+                // return json_encode($returnResponse);
         }
+        $returnResponse['status']="success";
+        // return json_encode($returnResponse);
         session()->put('email',$req->email);
         
         return redirect('/userDataPage');
     }
 
+    function userpost(){
+        return '1';
+    }
+    
     function userDataPage(Request $req){
+        return 1;
         if(!$req->session()->get('email')){
             return redirect('/');
         }
@@ -43,7 +52,7 @@ class Users extends Controller
             'user' => $user
         ];
 
-        return  view("showUserData",compact('data'));
+        return  view("index",compact('data'));
     }
     /*create account Function*/
     
@@ -59,9 +68,8 @@ class Users extends Controller
 
     function dataRegister(Request $req){
         $returnResponse = array();
-        $existingUser = User::where('email',$req->email)->orwhere('phone',$req->phone)->first();
+        $existingUser = User::where('email',$req->email)->orWhere('phone',$req->phone)->first();
         if($existingUser){
-             $existingUser->save();
             $returnResponse["status"] = "error";
             return json_encode($returnResponse);
         } 
@@ -81,10 +89,13 @@ class Users extends Controller
         $user->gender= $req->gender;
         $user->phone = $req->phone;
         
-        $user ->save();
+       $result= $user ->save();
+         
+        $returnResponse["status"] = "success";
+    
         return json_encode($returnResponse);
 
-        // return redirect("/");
+       
     }
  
 
@@ -103,7 +114,7 @@ class Users extends Controller
         $user->gender= $req->gender;
         $user->phone = $req->phone;
         
-        $user ->update();
+        $user->update();
         return redirect('/');
     }
 
@@ -137,7 +148,7 @@ class Users extends Controller
         
         $data = User::where('email',$req->email)->first();
 
-            if($data && Hash::check($req->password,$data->password)){
+        if($data && Hash::check($req->password,$data->password)){
             return "incorrect credentails";
         }
         session()->put('email',$req->email);
@@ -156,5 +167,11 @@ class Users extends Controller
  
     }
 
-
+    function index(){
+       return view('index');
+    }
+   
+    // function userpost(){
+    //     return view('userpost');
+    // }
 }

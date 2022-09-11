@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Users;
+use App\Http\Controllers\userController;
 
 
 /* 
@@ -17,7 +18,7 @@ use App\Http\Controllers\Users;
  
 
 /* Login Route*/
-Route::get('/',[Users::class,'viewLoginForm']);
+// Route::get('/',[Users::class,'viewLoginForm']);
 Route::get('userDataPage',[Users::class,'userDataPage']);
 Route::post('loginsubmit',[Users::class,'loginsubmit']);
 /* Login Route*/
@@ -84,3 +85,7 @@ Route::get('admin',[Users::class,'admin']);
 Route::get('adminlogout',[Users::class,'adminlogout']);
 
 
+
+
+ 
+Route::get('/userpost',[Users::class,'userpost']);
